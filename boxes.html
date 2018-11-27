@@ -44,6 +44,13 @@ $(function() {
     var existingzoom = $('#docinnerarea').css('zoom'); 
     $('#docinnerarea').css('zoom', existingzoom / 1.2);
   });
+  
+  
+  setInterval(function() {
+  
+    $('box').css('border-color', "rgb(255," + (Math.random()*255) + "," + (Math.random()*255) + ")");
+  
+  }, 100);
 });
 
 </script>
