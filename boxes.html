@@ -1,0 +1,98 @@
+<!DOCTYPE html5>
+<html>
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+
+var coordinates = [
+  //x, y, width, height
+  1, 2, 150, 40,
+  20, 150, 100, 10,
+  99, 50, 200, 30,
+
+]
+
+$(function() {
+  // Code run when document loaded
+  
+  for (var i=0; i<coordinates.length/4; i++) {
+    var mybox = $('<box></box>');
+    
+    mybox.css('left', coordinates[i*4] );
+    mybox.css('top', coordinates[i*4+1] );
+    mybox.css('width', coordinates[i*4+2] );
+    mybox.css('height', coordinates[i*4+3] );
+    
+    //mybox.css('cursor', 'hand');
+    
+    mybox.attr('contentEditable', true);
+    
+    //mybox.click(function() {alert('hello!');});
+    mybox.text('box number' + i);
+    
+    $('#docinnerarea').append(mybox);
+  }
+
+  $('#zoomin').click(function() {
+    var existingzoom = $('#docinnerarea').css('zoom'); 
+    $('#docinnerarea').css('zoom', existingzoom * 1.2);
+  });
+  $('#zoomout').click(function() {
+    var existingzoom = $('#docinnerarea').css('zoom'); 
+    $('#docinnerarea').css('zoom', existingzoom / 1.2);
+  });
+});
+
+</script>
+<style>
+
+
+#docinnerarea {
+    zoom: 1.5;
+}
+
+#docarea {
+  position: relative;
+  background-color: grey;
+  
+  height: 300px;
+  overflow: scroll;
+  
+}
+
+#docarea img {
+  position: absolute;
+}
+
+
+#docarea box {
+  position: absolute;
+  border: 10px solid blue;
+  background-color: rgba(255,255,255,0.5);
+  overflow: hidden;
+  top: 20px;
+}
+
+</style>
+</head>
+
+<body>
+
+
+
+<h1> heading</h1>
+<button id=zoomin>+</button>
+<button id=zoomout>-</button>
+
+<div id=docarea>
+  <div id=docinnerarea>
+    <img src='file:///home/sd/Downloads/8dfd47013199befdb552a5dbf2a90cb5.jpg' />
+
+  </div>
+
+</div>
+</body>
+</html>
